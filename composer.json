@@ -1,0 +1,25 @@
+{
+	"name":"samsonframework/base",
+    "description": "SamsonFramework base interfaces",
+    "keywords": ["SamsonFramework", "base", "interfaces"],
+    "authors":[
+        {
+            "name":"Vitaly Iegorov",
+            "email":"egorov@samsonos.com"
+        }
+    ],
+    "require": {
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.2.*"
+    },
+    "minimum-stability":"dev",
+	"license":"Open Software License (OSL) v 3.0",
+	"homepage":"http://samsonos.com/",
+    "autoload" : {
+        "classmap": ["src/"],
+        "psr-4": {
+            "samsonframework\\": "src/"
+        }
+    }
+}
