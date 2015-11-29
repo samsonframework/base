@@ -20,6 +20,14 @@ interface QueryInterface
     public function entity($entity = null);
 
     /**
+     * Flush query and return to beginning state. Entity if was set stays unchanged all
+     * other internal data are cleared.
+     *
+     * @return self Chaining
+     */
+    public function flush();
+
+    /**
      * Add condition to current query.
      *
      * @param string $fieldName Entity field name
