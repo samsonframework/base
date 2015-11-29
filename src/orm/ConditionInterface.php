@@ -43,4 +43,9 @@ interface ConditionInterface extends \Iterator
      * @return self Chaining
      */
     public function add($fieldName, $value, $relation = ArgumentInterface::EQUAL);
+
+    /**
+     * @return int Amount of condition group arguments
+     */
+    public function size();
 }
