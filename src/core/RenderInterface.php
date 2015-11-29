@@ -5,6 +5,11 @@
  */
 namespace samsonframework\core;
 
+/**
+ * View rendering interface
+ * @package samsonframework\core
+ * @author Vitaly Iegorov <egorov@samsonos.com>
+ */
 interface RenderInterface
 {
 

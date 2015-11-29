@@ -7,8 +7,12 @@
  */
 namespace samsonframework\orm;
 
-
-class RecordInterface
+/**
+ * Database record interface
+ * @package samsonframework\orm
+ * @author Vitaly Iegorov <egorov@samsonos.com>
+ */
+interface RecordInterface
 {
 
 }

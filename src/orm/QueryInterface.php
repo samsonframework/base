@@ -6,7 +6,8 @@
 namespace samsonframework\orm;
 
 /**
- * Base database query building interface
+ * Database query building interface
+ * @author Vitaly Iegorov <egorov@samsonos.com>
  */
 interface QueryInterface
 {
