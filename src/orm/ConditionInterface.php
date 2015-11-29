@@ -38,9 +38,9 @@ interface ConditionInterface
      * Add condition group argument function.
      *
      * @param string $fieldName Entity field name
-     * @param string $value Entity field value
+     * @param mixed $value Entity field value
      * @param string $relation Relation between argument and its value
      * @return self Chaining
      */
-    public function add($fieldName, $value = '', $relation = ArgumentInterface::EQUAL);
+    public function add($fieldName, $value, $relation = ArgumentInterface::EQUAL);
 }
