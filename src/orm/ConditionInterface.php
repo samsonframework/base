@@ -17,12 +17,14 @@ interface ConditionInterface
     /**
      * Add condition argument to this condition group
      * @param ArgumentInterface $argument Condition argument to be added
+     * @return self Chaining
      */
     public function addArgument(ArgumentInterface $argument);
 
     /**
      * Add condition group to this condition group
      * @param self $condition Condition group to be added
+     * @return self Chaining
      */
     public function addCondition(self $condition);
 
