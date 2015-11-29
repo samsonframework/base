@@ -12,6 +12,14 @@ namespace samsonframework\orm;
 interface QueryInterface
 {
     /**
+     * Function to reconfigure dbQuery to work with multiple Entities
+     *
+     * @param string $className Entity name
+     * @return self|string Chaining or current class name if nothing is passed
+     */
+    public function className($className = null);
+
+    /**
      * Add condition to current query.
      *
      * @param string $fieldName Entity field name
@@ -20,6 +28,40 @@ interface QueryInterface
      * @return self Chaining
      */
     public function cond($fieldName, $fieldValue = null, $relation = '=');
+
+    /**
+     * Join entity to query.
+     *
+     * @param string $entityName Entity identifier
+     * @return self Chaining
+     */
+    public function join($entityName);
+
+    /**
+     * Add query result grouping.
+     *
+     * @param string $fieldName Entity field identifier for grouping
+     * @return self Chaining
+     */
+    public function groupBy($fieldName);
+
+    /**
+     * Add query result quantity limitation.
+     *
+     * @param int $offset Resulting offset
+     * @param null|int $quantity Amount of RecordInterface object to return
+     * @return self Chaining
+     */
+    public function limit($offset, $quantity = null);
+
+    /**
+     * Add query result sorting.
+     *
+     * @param string $fieldName Entity field identifier for worting
+     * @param string $order Sorting order
+     * @return self Chaining
+     */
+    public function orderBy($fieldName, $order = 'ASC');
 
     /**
      * Execute current query and receive collection of field values for RecordInterface collection
