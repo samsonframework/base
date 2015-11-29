@@ -12,7 +12,7 @@ namespace samsonframework\orm;
  * @package samsonframework\orm
  * @author Vitaly Iegorov <egorov@samsonos.com>
  */
-interface ConditionInterface
+interface ConditionInterface extends \Iterator
 {
     /** AND(conjunction) - Condition relation type */
     const CONJUNCTION = 'AND';
