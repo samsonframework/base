@@ -12,12 +12,12 @@ namespace samsonframework\orm;
 interface QueryInterface
 {
     /**
-     * Function to reconfigure dbQuery to work with multiple Entities
+     * Set query entity to work with.
      *
-     * @param string $className Entity name
-     * @return self|string Chaining or current class name if nothing is passed
+     * @param string $entity Entity identifier
+     * @return self|string Chaining or current entity identifier if nothing is passed
      */
-    public function className($className = null);
+    public function entity($entity = null);
 
     /**
      * Add condition to current query.
