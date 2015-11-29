@@ -14,6 +14,12 @@ namespace samsonframework\orm;
  */
 interface ConditionInterface
 {
+    /** AND(conjunction) - Condition relation type */
+    const CONJUNCTION = 'AND';
+
+    /** OR(disjunction) - Condition relation type */
+    const DISJUNCTION = 'OR';
+
     /**
      * Add condition argument to this condition group
      * @param ArgumentInterface $argument Condition argument to be added
