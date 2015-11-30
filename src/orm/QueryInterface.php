@@ -35,7 +35,7 @@ interface QueryInterface
      * @param string $relation Relation between field name and its value
      * @return self Chaining
      */
-    public function cond($fieldName, $fieldValue = null, $relation = '=');
+    public function where($fieldName, $fieldValue = null, $relation = '=');
 
     /**
      * Join entity to query.
