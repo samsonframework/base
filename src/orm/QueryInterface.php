@@ -15,9 +15,9 @@ interface QueryInterface
      * Set query entity to work with.
      *
      * @param string $entity Entity identifier
-     * @return self|string Chaining or current entity identifier if nothing is passed
+     * @return self Chaining
      */
-    public function entity($entity = null);
+    public function entity($entity);
 
     /**
      * Flush query and return to beginning state. Entity if was set stays unchanged all
