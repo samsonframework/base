@@ -38,6 +38,14 @@ interface QueryInterface
     public function where($fieldName, $fieldValue = null, $relation = '=');
 
     /**
+     * Add query condition as prepared Condition instance.
+     *
+     * @param Condition $condition Condition to be added
+     * @return self Chaining
+     */
+    public function whereCondition(Condition $condition);
+
+    /**
      * Join entity to query.
      *
      * @param string $entityName Entity identifier
