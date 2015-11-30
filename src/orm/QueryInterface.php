@@ -40,10 +40,10 @@ interface QueryInterface
     /**
      * Add query condition as prepared Condition instance.
      *
-     * @param Condition $condition Condition to be added
+     * @param ConditionInterface $condition Condition to be added
      * @return self Chaining
      */
-    public function whereCondition(Condition $condition);
+    public function whereCondition(ConditionInterface $condition);
 
     /**
      * Join entity to query.
