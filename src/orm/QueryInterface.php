@@ -31,11 +31,11 @@ interface QueryInterface
      * Add condition to current query.
      *
      * @param string $fieldName Entity field name
-     * @param string $fieldValue Value
+     * @param string|null $fieldValue Value
      * @param string $relation Relation between field name and its value
      * @return self Chaining
      */
-    public function cond($fieldName, $fieldValue, $relation = '=');
+    public function cond($fieldName, $fieldValue = null, $relation = '=');
 
     /**
      * Join entity to query.
