@@ -11,12 +11,12 @@ namespace samsonframework\orm;
  */
 interface ManagerInterface
 {
-    /**
-     * Get query for database entity to work with.
-     *
-     * @return QueryInterface Query for building database request
-     */
-    public function query();
+//    /**
+//     * Get query for database entity to work with.
+//     *
+//     * @return QueryInterface Query for building database request
+//     */
+//    public function query();
 
     /**
      * Get new entity instance.
