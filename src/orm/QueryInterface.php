@@ -81,18 +81,6 @@ interface QueryInterface
     public function orderBy($fieldName, $order = 'ASC');
 
     /**
-     * Perform database query with specific SQL statement.
-     *
-     * @param string $statement SQL statement for execution
-     * @param null|RecordInterface[] $return If variable is passed resulting collection would be
-     *                                      stored in this variable.
-     * @return bool|RecordInterface If method is called with $return parameter then then bool
-     *                                  with query result status would be returned, otherwise
-     *                                  query result collection would be returned.
-     */
-    public function sql($statement, &$return = null);
-
-    /**
      * Execute current query and receive collection of field values for RecordInterface collection
      * received from database.
      *
