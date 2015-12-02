@@ -73,11 +73,20 @@ interface QueryInterface
     /**
      * Add query result sorting.
      *
-     * @param string $fieldName Entity field identifier for worting
+     * @param string $fieldName Entity field identifier for sorting.
+     *
      * @param string $order Sorting order
      * @return self Chaining
      */
     public function orderBy($fieldName, $order = 'ASC');
+
+    /**
+     * Perform database query with specific SQL statement.
+     *
+     * @param string $statement SQL statement for executioin
+     * @return RecordInterface[] Collection of database records
+     */
+    public function sql($statement);
 
     /**
      * Execute current query and receive collection of field values for RecordInterface collection
