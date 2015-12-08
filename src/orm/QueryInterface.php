@@ -31,7 +31,7 @@ interface QueryInterface
      * Add condition to current query.
      *
      * @param string $fieldName Entity field name
-     * @param string|null $fieldValue Value
+     * @param mixed $fieldValue Value
      * @param string $relation Relation between field name and its value
      * @return self Chaining
      */
