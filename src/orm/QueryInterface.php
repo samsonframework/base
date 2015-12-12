@@ -87,7 +87,7 @@ interface QueryInterface
      * @param string $columnName Database entity field name
      * @param null|RecordInterface[] $return If variable is passed resulting collection would be
      *                                      stored in this variable.
-     * @return bool|RecordInterface If method is called with $return parameter then then bool
+     * @return array If method is called with $return parameter then then bool
      *                                  with query result status would be returned, otherwise
      *                                  query result collection would be returned.
      */
@@ -98,7 +98,7 @@ interface QueryInterface
      *
      * @param null|RecordInterface[] $return If variable is passed resulting collection would be
      *                                      stored in this variable.
-     * @return bool|RecordInterface If method is called with $return parameter then then bool
+     * @return bool|RecordInterface[] If method is called with $return parameter then then bool
      *                                  with query result status would be returned, otherwise
      *                                  query result collection would be returned.
      */
