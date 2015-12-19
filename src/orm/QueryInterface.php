@@ -114,4 +114,15 @@ interface QueryInterface
      *                                  query result RecordInterface would be returned.
      */
     public function first(&$return = null);
+
+    /**
+     * Execute current query and receive amount of resulting rows.
+     *
+     * @param null|RecordInterface $return If variable is passed resulting amount of rows would be
+     *                                      stored in this variable.
+     * @return bool|RecordInterface If method is called with $return parameter then then bool
+     *                                  with query result status would be returned, otherwise
+     *                                  query rows count would be returned.
+     */
+    public function count(&$return = null);
 }
