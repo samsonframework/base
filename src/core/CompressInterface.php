@@ -6,7 +6,8 @@
 namespace samsonframework\core;
 
 /**
- * Module compressing interface
+ * Module compressing interface.
+ *
  * @package samsonframework\core
  * @author Vitaly Iegorov <egorov@samsonos.com>
  */

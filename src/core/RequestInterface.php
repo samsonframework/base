@@ -9,7 +9,7 @@ namespace samsonframework\core;
 
 /**
  * Generic interface for request.
- * 
+ *
  * @author Vitaly Iegorov <egorov@samsonos.com>
  * @package samsonframework\core
  */

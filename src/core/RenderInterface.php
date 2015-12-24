@@ -13,5 +13,5 @@ namespace samsonframework\core;
  */
 interface RenderInterface
 {
-
+    public function toView($prefix = null, array $restricted = array());
 }
