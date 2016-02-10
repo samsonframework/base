@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by Maxim Omelchenko <omelchenko@samsonos.com>
+ * Created by Vitaly Iegorov <egorov@samsonos.com>
  * on 03.04.2015 at 15:43
  */
 namespace samsonframework\core;
@@ -37,7 +37,7 @@ interface ViewInterface
      * opportunity not to set the view path before setting view data to it.
      *
      * @param string $pathPattern  Path pattern for view searching
-     * @return IViewable Chaining
+     * @return self Chaining
      */
     public function view($pathPattern);
 
