@@ -14,12 +14,18 @@ namespace samsonframework\core;
 interface ViewInterface
 {
     /**
-     * Set view variable
-     * @param string $key   Variable key\prefix for objects and arrays
+     * Set view variable.
+     *
+     * Passing an array as $value will add array key => values into current
+     * view data collection. If $key is passed then an array variable with this
+     * key will be added to view data collection beside adding array key => values.
+     *
      * @param mixed $value Variable value
+     * @param string|null $key   Variable key\prefix for objects and arrays
+     *
      * @return self Chaining
      */
-    public function set($key, $value = null);
+    public function set($value, $key = null);
 
     /**
      * Set current view for rendering.
