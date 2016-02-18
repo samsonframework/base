@@ -23,7 +23,7 @@ interface ViewInterface
      * @param mixed $value Variable value
      * @param string|null $key   Variable key\prefix for objects and arrays
      *
-     * @return self Chaining
+     * @return $this Chaining
      */
     public function set($value, $key = null);
 
@@ -43,7 +43,7 @@ interface ViewInterface
      * opportunity not to set the view path before setting view data to it.
      *
      * @param string $pathPattern  Path pattern for view searching
-     * @return self Chaining
+     * @return $this Chaining
      */
     public function view($pathPattern);
 
