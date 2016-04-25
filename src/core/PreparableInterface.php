@@ -16,9 +16,7 @@ interface PreparableInterface
     /**
      * Prepare package/module for loading.
      *
-     * @param array $params Collection of parameters needed for package/module preparation
-     *
      * @return bool Preparation stage status
      */
-    public function prepare(array $params = array());
+    public function prepare();
 }
