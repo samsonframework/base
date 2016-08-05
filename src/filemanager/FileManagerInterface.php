@@ -8,7 +8,6 @@ namespace samsonframework\filemanager;
 /**
  * File manager interface.
  * @author  Vitaly Iegorov <egorov@samsonos.com>
- * @package samsonphp\resource
  */
 interface FileManagerInterface
 {
