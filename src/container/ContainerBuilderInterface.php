@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 /**
  * Created by Vitaly Iegorov <egorov@samsonos.com>
  * on 03.04.2015 at 15:43
@@ -11,7 +11,7 @@ namespace samsonframework\container;
  * @package samsonframework\container
  * @author Vitaly Iegorov <egorov@samsonos.com>
  */
-interface BuilderInterface
+interface ContainerBuilderInterface
 {
     /**
      * Build container class.
