@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: VITALYIEGOROV
@@ -7,11 +7,12 @@
  */
 namespace samsonframework\core;
 
+use \Interop\Container\ContainerInterface;
+
 /**
  * Generic interface for framework interactions.
  *
  * @author Vitaly Iegorov <egorov@samsonos.com>
- * @package samsonframework\core
  */
 interface SystemInterface
 {
@@ -38,4 +39,11 @@ interface SystemInterface
 
     /** Event - Fires when system instance is destructed */
     const E_SYSTEM_SHUTDOWN = 'system.loaded';
+    
+    /** 
+     * Get system container for packages/modules/dependencies retrieval.
+     * 
+     * @return ContainerInterface Get system container 
+     */
+    public function getContainer();
 }
