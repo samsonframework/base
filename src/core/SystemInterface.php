@@ -7,7 +7,7 @@
  */
 namespace samsonframework\core;
 
-use \Interop\Container\ContainerInterface;
+use \samsonframework\container\ContainerInterface;
 
 /**
  * Generic interface for framework interactions.
