@@ -35,10 +35,12 @@ interface ContainerInterface extends \Interop\Container\ContainerInterface
      */
     public function service($className, array $parameters = [], string $alias = null) : ContainerInterface;
     
-     /** 
-      * Get collection of instantiated service instances.
-      *
-      * @return array Collection of existing service instances 
-      */
-    public function getServices() : array;
+    /**
+     * Get collection of instantiated service instances.
+     *
+     * @param string $filterScope Filter services by scope
+     *
+     * @return array Collection of existing service instances
+     */
+    public function getServices(string $filterScope = null) : array;
 }
