@@ -97,10 +97,12 @@ interface QueryInterface
      * Execute current query and receive collection of field values for RecordInterface collection
      * received from database.
      *
-     * @param string $columnName Database entity field name
+     * @param string $fieldName Database entity field name
+     *
      * @return array Collection of record column values
+     * @throws \InvalidArgumentException If table does not have field
      */
-    public function fields(string $columnName) : array;
+    public function fields(string $fieldName) : array;
 
     /**
      * Execute current query and receive collection of RecordInterface objects from database.
