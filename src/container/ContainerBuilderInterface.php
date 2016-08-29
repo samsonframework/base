@@ -16,7 +16,7 @@ interface ContainerBuilderInterface
     /**
      * Build container class.
      *
-     * @param array $classMetadata Collection of classes metadata for container
+     * @param array $classMetadata Collection of classes className for container
      * @param string|null $containerClass Container class name
      * @param string      $namespace      Name space
      *

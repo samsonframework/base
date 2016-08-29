@@ -35,13 +35,12 @@ interface DatabaseInterface
      * Retrieve array of records column value from a database.
      *
      * @param string $sql       SQL statement
-     * @param string $className Entity class name
-     * @param string $fieldName Entity field name
+     * @param int  $columnIndex Column index
      *
      * @return array Collection of records column values
      *
      */
-    public function fetchColumn(string $sql, string $className, string $fieldName) : array;
+    public function fetchColumn(string $sql, int $columnIndex) : array;
 
     /**
      * Retrieve array of records from a database.
