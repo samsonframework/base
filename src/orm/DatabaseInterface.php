@@ -24,27 +24,6 @@ interface DatabaseInterface
     const DEF_CHARSET = 'utf8';
 
     /**
-     * Connect to a database using driver with parameters
-     * @param string $database Database name
-     * @param string $username Database username
-     * @param string $password Database password
-     * @param string $host Database host(localhost by default)
-     * @param int $port Database port(3306 by default)
-     * @param string $driver Database driver for interaction(MySQL by default)
-     * @param string $charset Database character set
-     * @return bool True if connection to database was successful
-     */
-    public function connect(
-        $database,
-        $username,
-        $password,
-        $host = self::DEF_HOST,
-        $port = self::DEF_PORT,
-        $driver = self::DEF_DRIVER,
-        $charset = self::DEF_CHARSET
-    );
-
-    /**
      * High-level database query executor.
      *
      * @param string $sql SQL statement
