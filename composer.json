@@ -24,8 +24,11 @@
     "config":{
     "github-protocols":["https"]
   },
-  "extra": { 
-    "samsonphp_package_compressable": "1", 
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.x-dev"
+    },
+    "samsonphp_package_compressable": "1",
     "samson_module_include": "1"
   }
 }
