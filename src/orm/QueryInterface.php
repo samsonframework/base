@@ -14,18 +14,10 @@ interface QueryInterface
     /**
      * Set query entity to work with.
      *
-     * @param string $entity Entity identifier
+     * @param TableMetadata $metadata Entity metadata
      * @return QueryInterface Chaining
      */
-    public function entity(string $entity) : QueryInterface;
-
-    /**
-     * Flush query and return to beginning state. Entity if was set stays unchanged all
-     * other internal data are cleared.
-     *
-     * @return QueryInterface Chaining
-     */
-    public function flush() : QueryInterface;
+    public function entity(TableMetadata $metadata) : QueryInterface;
 
     /**
      * Add condition to current query.

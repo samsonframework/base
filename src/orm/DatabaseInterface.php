@@ -65,12 +65,12 @@ interface DatabaseInterface
      * Retrieve array of class instances with joins from a database.
      *
      * @param string $sql SQL statement
-     * @param string $className Class name for instance creation
-     * @param array  $joins Collection of joined instances class names
+     * @param TableMetadata $metadata Table metadata
+     * @param TableMetadata[]  $joinedMetadata Collection of joined tables metadata
      *
      * @return array Collection of objects with joins
      */
-    public function fetchObjectsWithJoin(string $sql, string $className, array $joins) : array;
+    public function fetchObjectsWithJoin(string $sql, TableMetadata $metadata, array $joinedMetadata) : array;
 
     /**
      * Return amount of records from SQL statement.
