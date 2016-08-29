@@ -21,7 +21,7 @@ interface ArgumentInterface
     const GREATER_EQ = '>=';
     const LOWER_EQ = '<=';
     const LIKE = ' LIKE ';
-    const NOTNULL = ' IS NOT NULL ';
-    const ISNULL = ' IS NULL ';
-    const OWN = ' !!! ';
+    const NOTNULL = 'IS NOT NULL';
+    const ISNULL = 'IS NULL';
+    const OWN = '!!!';
 }

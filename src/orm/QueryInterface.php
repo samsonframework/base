@@ -44,6 +44,16 @@ interface QueryInterface
     public function whereCondition(ConditionInterface $condition) : QueryInterface;
 
     /**
+     * Add column for selection from database.
+     *
+     * @param string $tableName Table name
+     * @param string $fieldName Table field name
+     *
+     * @return QueryInterface
+     */
+    public function select(string $tableName, string $fieldName) : QueryInterface;
+
+    /**
      * Join entity to query.
      *
      * @param string $entityName Entity identifier
@@ -55,11 +65,12 @@ interface QueryInterface
     /**
      * Add query result grouping.
      *
-     * @param string $fieldName Entity field identifier for grouping
+     * @param string $tableName Table name
+     * @param string $fieldName Table field name
      *
      * @return QueryInterface Chaining
      */
-    public function groupBy(string $fieldName) : QueryInterface;
+    public function groupBy(string $tableName, string $fieldName) : QueryInterface;
 
     /**
      * Add query result quantity limitation.
@@ -74,12 +85,13 @@ interface QueryInterface
     /**
      * Add query result sorting.
      *
-     * @param string $fieldName Entity field identifier for sorting.
+     * @param string $tableName Table name
+     * @param string $fieldName Table field name
      * @param string $order Sorting order
      *
      * @return QueryInterface Chaining
      */
-    public function orderBy(string $fieldName, string $order = 'ASC') : QueryInterface;
+    public function orderBy(string $tableName, string $fieldName, string $order = 'ASC') : QueryInterface;
 
     /**
      * Execute current query and receive collection of field values for RecordInterface collection
@@ -93,18 +105,14 @@ interface QueryInterface
     /**
      * Execute current query and receive collection of RecordInterface objects from database.
      *
-     * @return RecordInterface[] If method is called with $return parameter then then bool
-     *                                  with query result status would be returned, otherwise
-     *                                  query result collection would be returned.
+     * @return RecordInterface[] Database entities collection
      */
     public function exec() : array;
 
     /**
      * Execute current query and receive RecordInterface object from database.
      *
-     * @return RecordInterface If method is called with $return parameter then then bool
-     *                                  with query result status would be returned, otherwise
-     *                                  query result RecordInterface would be returned.
+     * @return RecordInterface Database entity
      */
     public function first() : RecordInterface;
 
