@@ -1,7 +1,7 @@
-<?php
+<?php declare(strict_types=1);
 /**
- * Created by Maxim Omelchenko <omelchenko@samsonos.com>
- * on 03.04.2015 at 14:25
+ * Created by Vitaly Iegorov <egorov@samsonos.com>
+ * on 29.08.2016 at 14:25
  */
 namespace samsonframework\orm;
 
@@ -15,17 +15,17 @@ interface QueryInterface
      * Set query entity to work with.
      *
      * @param string $entity Entity identifier
-     * @return self Chaining
+     * @return QueryInterface Chaining
      */
-    public function entity($entity);
+    public function entity(string $entity) : QueryInterface;
 
     /**
      * Flush query and return to beginning state. Entity if was set stays unchanged all
      * other internal data are cleared.
      *
-     * @return self Chaining
+     * @return QueryInterface Chaining
      */
-    public function flush();
+    public function flush() : QueryInterface;
 
     /**
      * Add condition to current query.
@@ -33,96 +33,93 @@ interface QueryInterface
      * @param string $fieldName Entity field name
      * @param mixed $fieldValue Value
      * @param string $relation Relation between field name and its value
-     * @return self Chaining
+     *
+     * @return QueryInterface Chaining
      */
-    public function where($fieldName, $fieldValue = null, $relation = '=');
+    public function where(
+        string $fieldName,
+        $fieldValue = null,
+        string $relation = ArgumentInterface::EQUAL
+    ) : QueryInterface;
 
     /**
      * Add query condition as prepared Condition instance.
      *
      * @param ConditionInterface $condition Condition to be added
-     * @return self Chaining
+     *
+     * @return QueryInterface Chaining
      */
-    public function whereCondition(ConditionInterface $condition);
+    public function whereCondition(ConditionInterface $condition) : QueryInterface;
 
     /**
      * Join entity to query.
      *
      * @param string $entityName Entity identifier
-     * @return self Chaining
+     *
+     * @return QueryInterface Chaining
      */
-    public function join($entityName);
+    public function join(string $entityName) : QueryInterface;
 
     /**
      * Add query result grouping.
      *
      * @param string $fieldName Entity field identifier for grouping
-     * @return self Chaining
+     *
+     * @return QueryInterface Chaining
      */
-    public function groupBy($fieldName);
+    public function groupBy(string $fieldName) : QueryInterface;
 
     /**
      * Add query result quantity limitation.
      *
-     * @param int $offset Resulting offset
      * @param null|int $quantity Amount of RecordInterface object to return
-     * @return self Chaining
+     * @param int      $offset   Resulting offset
+     *
+     * @return QueryInterface Chaining
      */
-    public function limit($offset, $quantity = null);
+    public function limit(int $quantity, int $offset = 0) : QueryInterface;
 
     /**
      * Add query result sorting.
      *
      * @param string $fieldName Entity field identifier for sorting.
-     *
      * @param string $order Sorting order
-     * @return self Chaining
+     *
+     * @return QueryInterface Chaining
      */
-    public function orderBy($fieldName, $order = 'ASC');
+    public function orderBy(string $fieldName, string $order = 'ASC') : QueryInterface;
 
     /**
      * Execute current query and receive collection of field values for RecordInterface collection
      * received from database.
      *
      * @param string $columnName Database entity field name
-     * @param null|RecordInterface[] $return If variable is passed resulting collection would be
-     *                                      stored in this variable.
-     * @return array If method is called with $return parameter then then bool
-     *                                  with query result status would be returned, otherwise
-     *                                  query result collection would be returned.
+     * @return array Collection of record column values
      */
-    public function fields($columnName, &$return = null);
+    public function fields(string $columnName) : array;
 
     /**
      * Execute current query and receive collection of RecordInterface objects from database.
      *
-     * @param null|RecordInterface[] $return If variable is passed resulting collection would be
-     *                                      stored in this variable.
-     * @return bool|RecordInterface[] If method is called with $return parameter then then bool
+     * @return RecordInterface[] If method is called with $return parameter then then bool
      *                                  with query result status would be returned, otherwise
      *                                  query result collection would be returned.
      */
-    public function exec(&$return = null);
+    public function exec() : array;
 
     /**
      * Execute current query and receive RecordInterface object from database.
      *
-     * @param null|RecordInterface $return If variable is passed resulting RecordInterface would be
-     *                                      stored in this variable.
-     * @return bool|RecordInterface If method is called with $return parameter then then bool
+     * @return RecordInterface If method is called with $return parameter then then bool
      *                                  with query result status would be returned, otherwise
      *                                  query result RecordInterface would be returned.
      */
-    public function first(&$return = null);
+    public function first() : RecordInterface;
 
     /**
      * Execute current query and receive amount of resulting rows.
      *
-     * @param null|RecordInterface $return If variable is passed resulting amount of rows would be
-     *                                      stored in this variable.
-     * @return bool|RecordInterface If method is called with $return parameter then then bool
-     *                                  with query result status would be returned, otherwise
-     *                                  query rows count would be returned.
+     * @return int Query rows count would be returned.
      */
-    public function count(&$return = null);
+    public function count() : int;
 }
