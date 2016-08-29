@@ -34,12 +34,14 @@ interface DatabaseInterface
     /**
      * Retrieve array of records column value from a database.
      *
-     * @param string $sql SQL statement
-     * @param int    $columnIndex Fetching column index number
+     * @param string $sql       SQL statement
+     * @param string $className Entity class name
+     * @param string $fieldName Entity field name
      *
      * @return array Collection of records column values
+     *
      */
-    public function fetchColumns(string $sql, int $columnIndex) : array;
+    public function fetchColumn(string $sql, string $className, string $fieldName) : array;
 
     /**
      * Retrieve array of records from a database.
@@ -70,4 +72,13 @@ interface DatabaseInterface
      * @return array Collection of objects with joins
      */
     public function fetchObjectsWithJoin(string $sql, string $className, array $joins) : array;
+
+    /**
+     * Return amount of records from SQL statement.
+     *
+     * @param string $sql SQL statement
+     *
+     * @return int Amount of records returned by SQL statement
+     */
+    public function count(string $sql) : int;
 }
