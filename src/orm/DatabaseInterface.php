@@ -37,7 +37,7 @@ interface DatabaseInterface
      * @param string $sql SQL statement
      * @param int    $columnIndex Fetching column index number
      *
-     * @return array Collection of arrays or objects
+     * @return array Collection of records column values
      */
     public function fetchColumns(string $sql, int $columnIndex) : array;
 
@@ -45,15 +45,29 @@ interface DatabaseInterface
      * Retrieve array of records from a database.
      *
      * @param string $sql SQL statement
-     * @return array Collection of arrays or objects
+     *
+     * @return array Collection of records(arrays)
      */
     public function fetchArray(string $sql) : array;
 
     /**
-     * Retrieve array of records from a database.
+     * Retrieve array of class instances from a database.
      *
      * @param string $sql SQL statement
-     * @return array Collection of arrays or objects
+     * @param string $className Class name for instance creation
+     *
+     * @return array Collection of objects
      */
     public function fetchObjects(string $sql, string $className) : array;
+
+    /**
+     * Retrieve array of class instances with joins from a database.
+     *
+     * @param string $sql SQL statement
+     * @param string $className Class name for instance creation
+     * @param array  $joins Collection of joined instances class names
+     *
+     * @return array Collection of objects with joins
+     */
+    public function fetchObjectsWithJoin(string $sql, string $className, array $joins) : array;
 }
