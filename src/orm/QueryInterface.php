@@ -109,14 +109,14 @@ interface QueryInterface
      *
      * @return RecordInterface[] Database entities collection
      */
-    public function exec() : array;
+    public function find() : array;
 
     /**
      * Execute current query and receive RecordInterface object from database.
      *
-     * @return RecordInterface Database entity
+     * @return null|RecordInterface Database entity
      */
-    public function first() : RecordInterface;
+    public function first();
 
     /**
      * Execute current query and receive amount of resulting rows.
