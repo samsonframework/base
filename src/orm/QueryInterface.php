@@ -14,10 +14,10 @@ interface QueryInterface
     /**
      * Set query entity to work with.
      *
-     * @param TableMetadata $metadata Entity metadata
+     * @param string|TableMetadata $metadata Entity metadata
      * @return QueryInterface Chaining
      */
-    public function entity(TableMetadata $metadata) : QueryInterface;
+    public function entity($metadata) : QueryInterface;
 
     /**
      * Add condition to current query.
