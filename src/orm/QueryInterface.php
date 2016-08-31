@@ -124,4 +124,41 @@ interface QueryInterface
      * @return int Query rows count would be returned.
      */
     public function count() : int;
+
+    /**
+     * Set query condition that field should be null.
+     *
+     * @param string $fieldName Database entity field name
+     *
+     * @return QueryInterface
+     */
+    public function isNull(string $fieldName) : QueryInterface;
+
+    /**
+     * Set query condition that field should NOT be null.
+     *
+     * @param string $fieldName Database entity field name
+     *
+     * @return QueryInterface
+     */
+    public function notNull(string $fieldName) : QueryInterface;
+
+    /**
+     * Set query condition that field value should NOT be empty.
+     *
+     * @param string $fieldName Database entity field name
+     *
+     * @return QueryInterface
+     */
+    public function notEmpty(string $fieldName) : QueryInterface;
+
+    /**
+     * Set query condition that field should be LIKE value.
+     *
+     * @param string $fieldName Database entity field name
+     * @param string $value Field value
+     *
+     * @return QueryInterface
+     */
+    public function like(string $fieldName, string $value = '') : QueryInterface;
 }
