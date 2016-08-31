@@ -161,4 +161,13 @@ interface QueryInterface
      * @return QueryInterface
      */
     public function like(string $fieldName, string $value = '') : QueryInterface;
+
+    /**
+     * Set query condition that primary field should be equal value.
+     *
+     * @param mixed $value Field value
+     *
+     * @return QueryInterface
+     */
+    public function primary($value) : QueryInterface;
 }
