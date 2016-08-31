@@ -80,4 +80,11 @@ interface DatabaseInterface
      * @return int Amount of records returned by SQL statement
      */
     public function count(string $sql) : int;
+
+    /**
+     * Get current database name.
+     *
+     * @return string Current database name
+     */
+    public function database() : string;
 }
