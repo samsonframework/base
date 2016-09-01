@@ -32,27 +32,6 @@ interface DatabaseInterface
     public function execute(string $sql);
 
     /**
-     * Insert data into table.
-     *
-     * @param string $tableName Table name
-     * @param array  $columnValues Data column name => column value collection
-     *
-     * @return mixed Database query result
-     */
-    public function insert(string $tableName, array $columnValues);
-
-    /**
-     * Update data in table.
-     *
-     * @param string $tableName    Table name
-     * @param array  $columnValues Data column name => column value collection
-     * @param string $sqlCondition Updating SQL statement condition
-     *
-     * @return mixed Database query result
-     */
-    public function update(string $tableName, array $columnValues, string $sqlCondition = null);
-
-    /**
      * Retrieve array of records column value from a database.
      *
      * @param string $sql       SQL statement
