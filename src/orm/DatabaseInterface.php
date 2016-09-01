@@ -75,12 +75,13 @@ interface DatabaseInterface
     /**
      * Retrieve array of class instances from a database.
      *
-     * @param string $sql SQL statement
+     * @param string $sql       SQL statement
      * @param string $className Class name for instance creation
+     * @param string $primaryField Entity primary field name
      *
      * @return array Collection of objects
      */
-    public function fetchObjects(string $sql, string $className) : array;
+    public function fetchObjects(string $sql, string $className, string $primaryField) : array;
 
     /**
      * Retrieve array of class instances with joins from a database.
