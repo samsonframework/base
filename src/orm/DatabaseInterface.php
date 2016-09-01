@@ -24,6 +24,27 @@ interface DatabaseInterface
     const DEF_CHARSET = 'utf8';
 
     /**
+     * Insert data into table.
+     *
+     * @param TableMetadata $tableMetadata
+     * @param array         $columnValues Data column name => column value collection
+     *
+     * @return int Database last inserted identifier
+     */
+    public function insert(TableMetadata $tableMetadata, array $columnValues);
+
+    /**
+     * Update data in table.
+     *
+     * @param TableMetadata $tableMetadata
+     * @param array         $columnValues Data column name => column value collection
+     * @param Condition     $condition Updated SQL where statement
+     *
+     * @return mixed Database query result
+     */
+    public function update(TableMetadata $tableMetadata, array $columnValues, Condition $condition);
+
+    /**
      * High-level database query executor.
      *
      * @param string $sql SQL statement
