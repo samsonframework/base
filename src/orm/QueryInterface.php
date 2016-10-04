@@ -35,7 +35,7 @@ interface QueryInterface
      * @param string $relation Relation between field name and its value
      * @return self Chaining
      */
-    public function where($fieldName, $fieldValue = null, $relation = '=');
+    public function where(string $fieldName, $fieldValue = null, string $relation = ArgumentInterface::EQUAL);
 
     /**
      * Add query condition as prepared Condition instance.
@@ -51,15 +51,16 @@ interface QueryInterface
      * @param string $entityName Entity identifier
      * @return self Chaining
      */
-    public function join($entityName);
+    public function join(string $entityName);
 
     /**
      * Add query result grouping.
      *
+     * @param string $tableName Entity table name
      * @param string $fieldName Entity field identifier for grouping
      * @return self Chaining
      */
-    public function groupBy($fieldName);
+    public function groupBy(string $tableName, string $fieldName);
 
     /**
      * Add query result quantity limitation.
@@ -68,30 +69,28 @@ interface QueryInterface
      * @param null|int $quantity Amount of RecordInterface object to return
      * @return self Chaining
      */
-    public function limit($offset, $quantity = null);
+    public function limit(int $quantity, int $offset = 0);
 
     /**
      * Add query result sorting.
      *
+     * @param string $tableName Entity table name
      * @param string $fieldName Entity field identifier for sorting.
-     *
      * @param string $order Sorting order
      * @return self Chaining
      */
-    public function orderBy($fieldName, $order = 'ASC');
+    public function orderBy(string $tableName, string $fieldName, string $order = 'ASC');
 
     /**
      * Execute current query and receive collection of field values for RecordInterface collection
      * received from database.
      *
-     * @param string $columnName Database entity field name
-     * @param null|RecordInterface[] $return If variable is passed resulting collection would be
-     *                                      stored in this variable.
+     * @param string $fieldName Database entity field name stored in this variable.
      * @return array If method is called with $return parameter then then bool
      *                                  with query result status would be returned, otherwise
      *                                  query result collection would be returned.
      */
-    public function fields($columnName, &$return = null);
+    public function fields(string $fieldName) : array;
 
     /**
      * Execute current query and receive collection of RecordInterface objects from database.
@@ -102,7 +101,7 @@ interface QueryInterface
      *                                  with query result status would be returned, otherwise
      *                                  query result collection would be returned.
      */
-    public function exec(&$return = null);
+    public function exec() : array;
 
     /**
      * Execute current query and receive RecordInterface object from database.
@@ -113,7 +112,7 @@ interface QueryInterface
      *                                  with query result status would be returned, otherwise
      *                                  query result RecordInterface would be returned.
      */
-    public function first(&$return = null);
+    public function first();
 
     /**
      * Execute current query and receive amount of resulting rows.
@@ -124,5 +123,5 @@ interface QueryInterface
      *                                  with query result status would be returned, otherwise
      *                                  query rows count would be returned.
      */
-    public function count(&$return = null);
+    public function count() : int;
 }
