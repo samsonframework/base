@@ -1,7 +1,7 @@
-<?php declare(strict_types=1);
+<?php
 /**
- * Created by Vitaly Iegorov <egorov@samsonos.com>
- * on 29.08.2016 at 14:25
+ * Created by Maxim Omelchenko <omelchenko@samsonos.com>
+ * on 03.04.2015 at 14:25
  */
 namespace samsonframework\orm;
 
@@ -14,10 +14,18 @@ interface QueryInterface
     /**
      * Set query entity to work with.
      *
-     * @param string|TableMetadata $metadata Entity metadata
-     * @return QueryInterface Chaining
+     * @param string $entity Entity identifier
+     * @return self Chaining
      */
-    public function entity($metadata) : QueryInterface;
+    public function entity($entity);
+
+    /**
+     * Flush query and return to beginning state. Entity if was set stays unchanged all
+     * other internal data are cleared.
+     *
+     * @return self Chaining
+     */
+    public function flush();
 
     /**
      * Add condition to current query.
@@ -25,149 +33,96 @@ interface QueryInterface
      * @param string $fieldName Entity field name
      * @param mixed $fieldValue Value
      * @param string $relation Relation between field name and its value
-     *
-     * @return QueryInterface Chaining
+     * @return self Chaining
      */
-    public function where(
-        string $fieldName,
-        $fieldValue = null,
-        string $relation = ArgumentInterface::EQUAL
-    ) : QueryInterface;
+    public function where($fieldName, $fieldValue = null, $relation = '=');
 
     /**
      * Add query condition as prepared Condition instance.
      *
      * @param ConditionInterface $condition Condition to be added
-     *
-     * @return QueryInterface Chaining
+     * @return self Chaining
      */
-    public function whereCondition(ConditionInterface $condition) : QueryInterface;
-
-    /**
-     * Add column for selection from database.
-     *
-     * @param string $tableName Table name
-     * @param string $fieldName Table field name
-     *
-     * @return QueryInterface
-     */
-    public function select(string $tableName, string $fieldName) : QueryInterface;
+    public function whereCondition(ConditionInterface $condition);
 
     /**
      * Join entity to query.
      *
      * @param string $entityName Entity identifier
-     *
-     * @return QueryInterface Chaining
+     * @return self Chaining
      */
-    public function join(string $entityName) : QueryInterface;
+    public function join($entityName);
 
     /**
      * Add query result grouping.
      *
-     * @param string $tableName Table name
-     * @param string $fieldName Table field name
-     *
-     * @return QueryInterface Chaining
+     * @param string $fieldName Entity field identifier for grouping
+     * @return self Chaining
      */
-    public function groupBy(string $tableName, string $fieldName) : QueryInterface;
+    public function groupBy($fieldName);
 
     /**
      * Add query result quantity limitation.
      *
+     * @param int $offset Resulting offset
      * @param null|int $quantity Amount of RecordInterface object to return
-     * @param int      $offset   Resulting offset
-     *
-     * @return QueryInterface Chaining
+     * @return self Chaining
      */
-    public function limit(int $quantity, int $offset = 0) : QueryInterface;
+    public function limit($offset, $quantity = null);
 
     /**
      * Add query result sorting.
      *
-     * @param string $tableName Table name
-     * @param string $fieldName Table field name
-     * @param string $order Sorting order
+     * @param string $fieldName Entity field identifier for sorting.
      *
-     * @return QueryInterface Chaining
+     * @param string $order Sorting order
+     * @return self Chaining
      */
-    public function orderBy(string $tableName, string $fieldName, string $order = 'ASC') : QueryInterface;
+    public function orderBy($fieldName, $order = 'ASC');
 
     /**
      * Execute current query and receive collection of field values for RecordInterface collection
      * received from database.
      *
-     * @param string $fieldName Database entity field name
-     *
-     * @return array Collection of record column values
-     * @throws \InvalidArgumentException If table does not have field
+     * @param string $columnName Database entity field name
+     * @param null|RecordInterface[] $return If variable is passed resulting collection would be
+     *                                      stored in this variable.
+     * @return array If method is called with $return parameter then then bool
+     *                                  with query result status would be returned, otherwise
+     *                                  query result collection would be returned.
      */
-    public function fields(string $fieldName) : array;
+    public function fields($columnName, &$return = null);
 
     /**
      * Execute current query and receive collection of RecordInterface objects from database.
      *
-     * @return RecordInterface[] Database entities collection
+     * @param null|RecordInterface[] $return If variable is passed resulting collection would be
+     *                                      stored in this variable.
+     * @return bool|RecordInterface[] If method is called with $return parameter then then bool
+     *                                  with query result status would be returned, otherwise
+     *                                  query result collection would be returned.
      */
-    public function find() : array;
+    public function exec(&$return = null);
 
     /**
      * Execute current query and receive RecordInterface object from database.
      *
-     * @return null|RecordInterface Database entity
+     * @param null|RecordInterface $return If variable is passed resulting RecordInterface would be
+     *                                      stored in this variable.
+     * @return bool|RecordInterface If method is called with $return parameter then then bool
+     *                                  with query result status would be returned, otherwise
+     *                                  query result RecordInterface would be returned.
      */
-    public function first();
+    public function first(&$return = null);
 
     /**
      * Execute current query and receive amount of resulting rows.
      *
-     * @return int Query rows count would be returned.
+     * @param null|RecordInterface $return If variable is passed resulting amount of rows would be
+     *                                      stored in this variable.
+     * @return bool|RecordInterface If method is called with $return parameter then then bool
+     *                                  with query result status would be returned, otherwise
+     *                                  query rows count would be returned.
      */
-    public function count() : int;
-
-    /**
-     * Set query condition that field should be null.
-     *
-     * @param string $fieldName Database entity field name
-     *
-     * @return QueryInterface
-     */
-    public function isNull(string $fieldName) : QueryInterface;
-
-    /**
-     * Set query condition that field should NOT be null.
-     *
-     * @param string $fieldName Database entity field name
-     *
-     * @return QueryInterface
-     */
-    public function notNull(string $fieldName) : QueryInterface;
-
-    /**
-     * Set query condition that field value should NOT be empty.
-     *
-     * @param string $fieldName Database entity field name
-     *
-     * @return QueryInterface
-     */
-    public function notEmpty(string $fieldName) : QueryInterface;
-
-    /**
-     * Set query condition that field should be LIKE value.
-     *
-     * @param string $fieldName Database entity field name
-     * @param string $value Field value
-     *
-     * @return QueryInterface
-     */
-    public function like(string $fieldName, string $value = '') : QueryInterface;
-
-    /**
-     * Set query condition that primary field should be equal value.
-     *
-     * @param mixed $value Field value
-     *
-     * @return QueryInterface
-     */
-    public function primary($value) : QueryInterface;
+    public function count(&$return = null);
 }
